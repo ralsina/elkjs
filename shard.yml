@@ -5,6 +5,9 @@ targets:
   elkjs:
     main: src/elkjs.cr
 
+scripts:
+  postinstall: cd src && gcc -DJS_DUMP -c  src/elk.c -o src/elk.o
+
 authors:
   - Roberto Alsina <roberto.alsina@gmail.com>
 

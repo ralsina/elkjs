@@ -17,14 +17,26 @@ lib Elk
   fun js_set(js : Js, obj : Jsval, name : LibC::Char*, val : Jsval)
   fun js_eval(js : Js, code : LibC::Char*, len : UInt32) : Jsval
   fun js_str(js : Js, val : Jsval) : LibC::Char*
+  fun js_chkargs(args : Jsval*, nargs : UInt32, spec : LibC::Char*) : Bool
+  fun js_truthy(js : Js, val : Jsval) : Bool
+  fun js_setmaxcss(js : Js, maxcss : LibC::SizeT)
+  fun js_setgct(js : Js, gct : LibC::SizeT)
+  fun js_stats(
+    js : Js,
+    total : LibC::SizeT*,
+    min : LibC::SizeT*,
+    cstacksize : LibC::SizeT*
+  )
+  fun js_dump(js : Js)
 end
 
-
 js_print = ->(js : Elk::Js, args : Elk::Jsval*, nargs : UInt32) : Elk::Jsval {
+  p! Elk.js_chkargs(args, nargs, "sd")
   (0...nargs).each do |i|
     str = Elk.js_str(js, args[i])
     puts String.new(str)
   end
+  Elk.js_dump(js)
   Elk.js_mkundef
 }
 
