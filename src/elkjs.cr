@@ -16,11 +16,15 @@ lib Elk
   fun js_mkfun((Js, Jsval*, UInt32) -> Jsval) : Jsval
   fun js_set(js : Js, obj : Jsval, name : LibC::Char*, val : Jsval)
   fun js_eval(js : Js, code : LibC::Char*, len : UInt32) : Jsval
+  fun js_str(js : Js, val : Jsval) : LibC::Char*
 end
 
+
 js_print = ->(js : Elk::Js, args : Elk::Jsval*, nargs : UInt32) : Elk::Jsval {
-  # TODO: process args and do something
-  p! "Print called with #{nargs} arguments"
+  (0...nargs).each do |i|
+    str = Elk.js_str(js, args[i])
+    puts String.new(str)
+  end
   Elk.js_mkundef
 }
 
