@@ -1,7 +1,6 @@
 This is the license for the binding, the license for the Elk javascript
 engine is in LICENSE-elk.md
 
-
 MIT License
 
 Copyright (c) 2024 Roberto Alsina <roberto.alsina@gmail.com>

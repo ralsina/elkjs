@@ -86,7 +86,7 @@ struct js {
 // returns, js.size is restored back. So js.size is used as a stack pointer.
 
 // clang-format off
-enum { 
+enum {
   TOK_ERR, TOK_EOF, TOK_IDENTIFIER, TOK_NUMBER, TOK_STRING, TOK_SEMICOLON,
   TOK_LPAREN, TOK_RPAREN, TOK_LBRACE, TOK_RBRACE,
   // Keyword tokens
@@ -99,7 +99,7 @@ enum {
   TOK_DOT = 100, TOK_CALL, TOK_POSTINC, TOK_POSTDEC, TOK_NOT, TOK_TILDA,    // 100
   TOK_TYPEOF, TOK_UPLUS, TOK_UMINUS, TOK_EXP, TOK_MUL, TOK_DIV, TOK_REM,    // 106
   TOK_PLUS, TOK_MINUS, TOK_SHL, TOK_SHR, TOK_ZSHR, TOK_LT, TOK_LE, TOK_GT,  // 113
-  TOK_GE, TOK_EQ, TOK_NE, TOK_AND, TOK_XOR, TOK_OR, TOK_LAND, TOK_LOR,      // 121 
+  TOK_GE, TOK_EQ, TOK_NE, TOK_AND, TOK_XOR, TOK_OR, TOK_LAND, TOK_LOR,      // 121
   TOK_COLON, TOK_Q,  TOK_ASSIGN, TOK_PLUS_ASSIGN, TOK_MINUS_ASSIGN,
   TOK_MUL_ASSIGN, TOK_DIV_ASSIGN, TOK_REM_ASSIGN, TOK_SHL_ASSIGN,
   TOK_SHR_ASSIGN, TOK_ZSHR_ASSIGN, TOK_AND_ASSIGN, TOK_XOR_ASSIGN,
@@ -1356,7 +1356,7 @@ char *js_getstr(struct js *js, jsval_t value, size_t *len) {
 }
 
 int js_type(jsval_t val) {
-  switch (vtype(val)) {  
+  switch (vtype(val)) {
     case T_UNDEF:   return JS_UNDEF;
     case T_NULL:    return JS_NULL;
     case T_BOOL:    return vdata(val) == 0 ? JS_FALSE: JS_TRUE;

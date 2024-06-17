@@ -16,4 +16,3 @@ let f = function(i) { return i*2; };
 for (let i=0; i<5; i++) {
     print(f(i));
 }")
-

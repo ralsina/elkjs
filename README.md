@@ -70,13 +70,17 @@ This doesn't seem to work even tho it's copied from the Elk docs:
 js.eval("let obj = {f: function(x) { return x * 2}}; obj.f(3);")
 ```
 
-For documentation in the underlying library, see [their site](https://github.com/cesanta/elk/tree/master) and you can always read the [source for ElkJS](https://github.com/ralsina/elkjs) since it's pretty tiny.
+For documentation in the underlying library, see
+[their site](https://github.com/cesanta/elk/tree/master) and you
+can always read the [source for ElkJS](https://github.com/ralsina/elkjs)
+since it's pretty tiny.
 
 ## Development
 
 * To build the example run `make`
 * A `src/elk.o` needs to be generated for this to link.
-  I think shard.yml should do that. If not, run `gcc -DJS_DUMP -c lib/elkjs/src/elk.c -o lib/elkjs/src/elk.o`
+  I think shard.yml should do that. If not, run
+  `gcc -DJS_DUMP -c lib/elkjs/src/elk.c -o lib/elkjs/src/elk.o`
 
 ## Contributing
 
