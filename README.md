@@ -64,6 +64,12 @@ for (let i=0; i<5; i++) {
 puts js.eval("1+1") # => 2
 ```
 
+This doesn't seem to work even tho it's copied from the Elk docs:
+
+```crystal
+js.eval("let obj = {f: function(x) { return x * 2}}; obj.f(3);")
+```
+
 For documentation in the underlying library, see [their site](https://github.com/cesanta/elk/tree/master) and you can always read the [source for ElkJS](https://github.com/ralsina/elkjs) since it's pretty tiny.
 
 ## Development
