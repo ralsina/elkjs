@@ -20,6 +20,21 @@ module Js
     def make_func(&)
     end
 
+    def self.to_jsval(js : Elk::Js, val)
+      case val
+      when Nil
+        Elk.js_mknull
+      when Bool
+        val ? Elk.js_mktrue : Elk.js_mkfalse
+      when String
+        Elk.js_mkstr(js, val, val.bytesize)
+      when Number
+        Elk.js_mknum(js, val)
+      else
+        Elk.js_mkundef
+      end
+    end
+
     def self.from_jsval(js : Elk::Js, val : Elk::Jsval)
       # FIXME: handle JS_UNDEFINED, JS_ERR, JS_PRIV
       case Elk.js_type(val)
@@ -46,7 +61,7 @@ module Js
           Js::Engine.from_jsval(js, args[i])
         }
 
-        {{block}}.call(p_args)
+        return Js::Engine.to_jsval(js, {{block}}.call(p_args))
       })
     end
 
@@ -61,7 +76,8 @@ js.set_global("print", Js.func(->(args : Js::Args) {
   args.each do |arg|
     puts arg
   end
-  Js::UNDEF # Return undefined
+  99
+  #   Js::UNDEF # Return undefined
 }))
 
-js.eval("print('Hello, World!', 42);")
+js.eval("print(print('Hello, World!', 42));")
