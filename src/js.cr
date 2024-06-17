@@ -14,10 +14,7 @@ module Js
     end
 
     def eval(code : String)
-      Elk.js_eval(@js, code, code.bytesize)
-    end
-
-    def make_func(&)
+      Engine.from_jsval(@js, Elk.js_eval(@js, code, code.bytesize))
     end
 
     def self.to_jsval(js : Elk::Js, val)
@@ -52,6 +49,10 @@ module Js
         String.new(buffer, size)
       when Elk::JsTypes::JS_NUM.value
         Elk.js_getnum(val)
+      when Elk::JsTypes::JS_ERR.value
+        raise "JS Error: " + String.new(Elk.js_str(js, val))
+      else
+        nil
       end
     end
   end
@@ -81,4 +82,4 @@ js.set_global("print", Js.func(->(args : Js::Args) {
   Js::UNDEF # Return undefined
 }))
 
-js.eval("print(print('Hello, World!', 42));")
+puts js.eval("print('Hello, World!', 42);")
