@@ -22,6 +22,8 @@ module Js
 
     def self.to_jsval(js : Elk::Js, val)
       case val
+      when Js::UNDEF
+        val
       when Nil
         Elk.js_mknull
       when Bool
@@ -76,8 +78,7 @@ js.set_global("print", Js.func(->(args : Js::Args) {
   args.each do |arg|
     puts arg
   end
-  99
-  #   Js::UNDEF # Return undefined
+  Js::UNDEF # Return undefined
 }))
 
 js.eval("print(print('Hello, World!', 42));")
