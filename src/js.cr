@@ -72,14 +72,3 @@ module Js
 
   UNDEF = Elk.js_mkundef
 end
-
-js = Js::Engine.new
-
-js.set_global("print", Js.func(->(args : Js::Args) {
-  args.each do |arg|
-    puts arg
-  end
-  Js::UNDEF # Return undefined
-}))
-
-puts js.eval("print('Hello, World!', 42);")
