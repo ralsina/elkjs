@@ -8,7 +8,7 @@ to make it very easy to use and extend from Crystal.
 
 **Important:** This is not a replacement for duktape or any other JS engine,
 it's *very* limited, it has no standard library at all, it doesn't even support
-arrays, objects, functions or integers!
+arrays, objects or integers!
 
 It's just a simple way to run some JS code in a Crystal
 runtime that can call back to Crystal code.
@@ -53,10 +53,11 @@ js.set_global("print", Js.func(->(args : Js::Args) {
 # A classic
 js.eval("print('Hello, World!');")
 
-# You can loop
+# You can loop and define functions
 js.eval("
-    for (let i=0; i<5; i++) {
-    print(i);
+let f = function(i) { return i*2; };
+for (let i=0; i<5; i++) {
+    print(f(i));
 }")
 
 # Eval returns the last value

@@ -12,6 +12,8 @@ js.set_global("print", Js.func(->(args : Js::Args) {
 js.eval("print('Hello, World!');")
 js.eval("print(1+2);")
 js.eval("
+
+let f = function(i) { return i*2; };
 for (let i=0; i<5; i++) {
-    print(i);
+    print(f(i));
 }")

@@ -1,4 +1,4 @@
-bin/elkjs: src/elk.o src/elk.cr src/js.cr
+bin/elkjs: src/elk.o src/elk.cr src/js.cr examples/main.cr
 	shards build 
 
 src/elk.o: src/elk.h src/elk.c
