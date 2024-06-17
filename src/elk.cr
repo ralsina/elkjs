@@ -35,14 +35,14 @@ lib Elk
 
   # Extract C values from JS values
   enum JsTypes
-    JS_UNDEF
-    JS_NULL
-    JS_TRUE
-    JS_FALSE
-    JS_STR
-    JS_NUM
-    JS_ERR
-    JS_PRIV
+    JS_UNDEF = 0
+    JS_NULL  = 1
+    JS_TRUE  = 2
+    JS_FALSE = 3
+    JS_STR   = 4
+    JS_NUM   = 5
+    JS_ERR   = 6
+    JS_PRIV  = 7
   end
   fun js_type(val : Jsval) : UInt32
   fun js_getnum(val : Jsval) : Float64

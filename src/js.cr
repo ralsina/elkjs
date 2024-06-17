@@ -23,17 +23,17 @@ module Js
     def self.from_jsval(js : Elk::Js, val : Elk::Jsval)
       # FIXME: handle JS_UNDEFINED, JS_ERR, JS_PRIV
       case Elk.js_type(val)
-      when 1 # Elk::JsTypes::JS_NULL
+      when Elk::JsTypes::JS_NULL.value
         nil
-      when 2 # Elk::JsTypes::JS_TRUE
+      when Elk::JsTypes::JS_TRUE.value
         true
-      when 3 # Elk::JsTypes::JS_FALSE
+      when Elk::JsTypes::JS_FALSE.value
         false
-      when 4 # Elk::JsTypes::JS_STR
+      when Elk::JsTypes::JS_STR.value
         size : UInt64 = 0
         buffer = Elk.js_getstr(js, val, pointerof(size))
         String.new(buffer, size)
-      when 5 # Elk::JsTypes::JS_NUM
+      when Elk::JsTypes::JS_NUM.value
         Elk.js_getnum(val)
       end
     end
