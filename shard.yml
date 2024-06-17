@@ -3,7 +3,7 @@ version: 0.1.0
 
 targets:
   elkjs:
-    main: src/elkjs.cr
+    main: src/js.cr
 
 scripts:
   postinstall: cd src && gcc -DJS_DUMP -c  src/elk.c -o src/elk.o
