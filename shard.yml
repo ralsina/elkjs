@@ -1,12 +1,8 @@
 name: elkjs
 version: 0.1.0
 
-targets:
-  elkjs:
-    main: examples/main.cr
-
 scripts:
-  postinstall: cd src && gcc -DJS_DUMP -c  src/elk.c -o src/elk.o
+  postinstall: cd ../src && gcc -DJS_DUMP -c  elk.c -o elk.o
 
 authors:
   - Roberto Alsina <roberto.alsina@gmail.com>
